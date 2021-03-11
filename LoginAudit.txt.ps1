@@ -117,12 +117,12 @@ $ip = Test-Connection -ComputerName (hostname) -Count 1  | Select -ExpandPropert
 $ip = $ip.IPAddressToString
 
 
-$EmailFrom = "IT-AD-Alerts@amla.io"
-$EmailTo = "itsupport@amla.io"
+$EmailFrom = "fromemail@email.com"
+$EmailTo = "toemail@email.com"
 $Subject ="AD Failed Login Attempts"
 $Body = "Login Failed on Hostname $env:computername IP $ip  $result $TimeGenerated "
 $SMTPServer = "aspmx.l.google.com"
 $SMTPClient = New-Object Net.Mail.SmtpClient($SmtpServer, 25)
 $SMTPClient.EnableSsl = $false
-$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("vikas.kamble@amla.io", "Vikas%358");
+$SMTPClient.Credentials = New-Object System.Net.NetworkCredential("emailid", "password");
 $SMTPClient.Send($EmailFrom, $EmailTo, $Subject, $Body)
